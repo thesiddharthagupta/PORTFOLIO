@@ -1,0 +1,509 @@
+/* -----------------------------
+   GLOBAL STYLES
+------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+
+:root {
+    --text-color: #f0f0f0;        /* Soft white, easier on eyes than pure white */
+    --bg-color: #1b3b30;          /* Deep, calm greenish-dark background */
+    --second-bg-color: #22543c;   /* Slightly lighter shade for contrast */
+    --main-color: #64e2f3;        /* Bright cyan accent for highlights */
+    --other-color: #c1c1d1;       /* Light gray for secondary text */
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s ease-in-out;
+}
+
+/* -----------------------------
+   HEADER
+------------------------------- */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 40px 5%;
+    z-index: 1000;
+    background: transparent;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:60px;
+    overflow: visible;
+}
+
+header.scrolled {
+    background: #1b3b30;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* NAV LINKS */
+.navlist {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex: 1;
+}
+.navlist a {
+    color: var(--other-color);
+    font-weight: 500;
+    transition: 0.3s;
+}
+.navlist a:hover { color: var(--main-color); }
+
+/* RIGHT SECTION */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    margin-left: auto;
+}
+
+
+
+/* THEME TOGGLE */
+.theme-toggle {
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+.theme-toggle:hover { color: var(--main-color); }
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* -----------------------------
+   MOBILE MENU (TOP SLIDE)
+------------------------------- */
+.mobile-menu {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px; /* compact width */
+    background: var(--bg-color);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+    z-index: 9999;
+}
+
+/* Menu opens */
+.mobile-menu.open {
+    top: 70px; /* below header */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Close (X) icon inside menu */
+.close-menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Mobile menu links */
+.mobile-menu a {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 0;
+    color: var(--other-color);
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+/* Hover effect (both modes) */
+.mobile-menu a:hover {
+    background: var(--main-color);
+    color: #000;
+    transform: translateX(5px);
+}
+
+
+
+/* Light mode support */
+body.light-mode .mobile-menu {
+    background: var(--second-bg-color);
+}
+body.light-mode .mobile-menu a {
+    color: var(--text-color);
+}
+body.light-mode .mobile-menu a:hover {
+    background: var(--main-color);
+    color: #000;
+}
+
+/* -----------------------------
+   HERO
+------------------------------- */
+.main-body {
+    min-height: 80vh;
+    padding: 140px 10% 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-content {
+    max-width: 600px;
+}
+.main-content h4 { font-size: 1.8rem; font-weight: 500; }
+.main-content h1 { font-size: 3rem; font-weight: 700; }
+.main-content p {
+    width: 100%;
+    color: var(--other-color);
+    margin-bottom: 20px;
+}
+
+/* SOCIAL ICONS */
+.social-main {
+    margin-bottom: 20px;
+}
+.social-main i {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--main-color);
+    transition: 0.3s;
+    margin-right: 12px;
+}
+.social-main i:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--main-color);
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 18px;
+    border: 2px solid var(--main-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn:hover {
+    background: var(--main-color);
+    color: #000;
+    box-shadow: 0 0 18px var(--main-color);
+}
+
+.main-content .btn.download-cv { margin-top: 30px; }
+
+/* HERO IMAGE */
+.hero-img img {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 40px var(--main-color);
+    transition: 0.3s;
+}
+.hero-img img:hover { transform: scale(1.05); }
+
+/* -----------------------------
+   SERVICES
+------------------------------- */
+.service { 
+    padding: 80px 10%; 
+    text-align: center; 
+}
+.section-title { 
+    font-size: 2.5rem; 
+    margin-bottom: 40px; 
+}
+
+.service-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.service-box {
+    width: 280px;
+    background: var(--second-bg-color);
+    padding: 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.service-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 15px var(--main-color);
+}
+
+/* -----------------------------
+   ABOUT
+------------------------------- */
+.about { 
+    padding: 80px 10%; 
+    text-align: center; 
+}
+.project-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.project-box {
+    width: 280px;
+    padding: 20px;
+    background: var(--second-bg-color);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.project-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--main-color);
+}
+
+/* -----------------------------
+   CONTACT
+------------------------------- */
+.contact { padding: 80px 10%; }
+
+.contact-wrapper {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.contact-left,
+.contact-right {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    background: var(--second-bg-color);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    color: var(--text-color);
+}
+
+.contact .section-title {
+    text-align: center;
+}
+
+.contact-left .contact-card {
+    background: var(--bg-color);
+    display: flex;
+    gap: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.contact-left .contact-card i {
+    min-width: 40px;
+    font-size: 28px;
+    color: var(--main-color);
+}
+
+.contact-right h2 { margin-bottom: 20px; font-size: 26px; }
+
+.contact-right form input,
+.contact-right form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    outline: none;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.contact-right form input:focus,
+.contact-right form textarea:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 8px rgba(186, 175, 13, 0.4);
+}
+
+/* Send Message button */
+.contact-right .btn:hover {
+    background: var(--main-color);
+    color: #000;
+    box-shadow: 0 0 18px var(--main-color);
+}
+
+/* -----------------------------
+   FOOTER
+------------------------------- */
+.footer {
+    padding: 25px 0;
+    text-align: center;
+    background: #1b3b30;
+    box-shadow: 0 2px 8px rgba(3, 3, 3, 0.5);
+    margin-top: 40px;
+    color: var(--other-color);
+}
+.footer a { color: #baaf0d; 
+    font-size: 20px;
+    font-weight: 600;
+}
+.footer p a:hover { 
+    color: #e2fb02;
+    text-decoration: underline;
+}   
+
+.footer-social a {
+    display: inline-block; /* allows transform to work */
+    font-size: 22px;
+    color: #baaf0d;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #e2fb02;
+    transform: scale(2.1);
+}
+
+
+/* -----------------------------
+   LIGHT MODE
+------------------------------- */
+body.light-mode {
+    --text-color: #1a1a1a;        /* Slightly softer than pure black */
+    --bg-color: #fdfdfd;          /* Bright, neutral background */
+    --second-bg-color: #eaeaea;   /* Subtle contrast for secondary elements */
+    --main-color: #2b8a78;        /* Accent color for buttons/links */
+    --other-color: #555555;       /* Neutral color for secondary text */
+}
+
+body.light-mode header,
+body.light-mode .footer {
+    background: #e6e6e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* -----------------------------
+   RESPONSIVE
+------------------------------- */
+@media(max-width: 768px) {
+    .navlist{ display: none !important; }
+    .hamburger { display: block; }
+    .header-right {
+        margin-left: auto;
+    }
+}
+
+@media(max-width: 576px) {
+    header {
+        padding: 12px 5%;
+        height: 60px;
+    }
+    nav {
+        justify-content: space-between;
+    }F
+    .header-right {
+        gap: 5px;
+    }
+}
+@media(max-width: 480px) {
+    .main-body {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+        gap: 30px;
+    }
+    .hero-img img {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--main-color);
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Individual parts hover effect */
+.logo-part {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect on entire logo */
+.logo:hover .logo-part {
+    transform: translateY(-4px) scale(1.05);
+    color: var(--text-color);
+}
+
+/* Optional: small underline animation */
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.3s ease;
+}
+
+.logo:hover::after {
+    width: 100%;
+}
+
+/* Light mode support */
+body.light-mode .logo {
+    color: var(--main-color);
+}
+body.light-mode .logo:hover .logo-part {
+    color: #0a4346;
+}
+body.light-mode .logo::after {
+    background: var(--main-color);
+}
+
+
