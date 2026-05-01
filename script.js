@@ -66,18 +66,6 @@ themeToggle.addEventListener("click", () => {
     }
 });
 
-// TOAST FUNCTION
-// -----------------------------
-function showToast(message) {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 3000);
-}
-
 // -----------------------------
 // CONTACT FORM HANDLER
 // -----------------------------
