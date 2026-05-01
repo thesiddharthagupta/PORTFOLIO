@@ -227,8 +227,6 @@ body.light-mode .mobile-menu a:hover {
     box-shadow: 0 0 18px var(--main-color);
 }
 
-.main-content .btn.download-cv { margin-top: 30px; }
-
 /* HERO IMAGE */
 .hero-img img {
     width: 340px;
